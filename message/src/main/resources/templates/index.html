@@ -5,12 +5,11 @@
     <title>メッセージ一覧</title>
 </head>
 <body>
-    <h1>投稿メッセージ</h1>
+    <h1>Todoリスト</h1>
 
     <form method="post" action="/post">
-        <input type="text" name="name" placeholder="名前">
-        <input type="text" name="text" placeholder="メッセージ">
-        <button type="submit">投稿</button>
+        <input type="text" name="name" placeholder="新しいタスク">
+        <button type="submit">登録</button>
     </form>
 
     <p th:if="${error}" th:text="${error}" style="color:red;"></p>
