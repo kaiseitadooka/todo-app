@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO一覧</title>
+</head>
+<body>
+    <h1>TODOリスト</h1>
+
+    <form method="post" action="/post">
+        <input type="text" name="name" placeholder="名前">
+        <input type="text" name="text" placeholder="todo">
+        <input type="checkbox" name="isCompleted"> 完了
+        <button type="submit">登録</button>
+    </form>
+
+    <p th:if="${error}" th:text="${error}" style="color:red;"></p>
+
+    <ul>
+       <li th:each="msg : ${todos}">
+    <strong th:text="${msg.name}">名前</strong>: 
+    <span th:text="${msg.text}">本文</span>
+    <span th:text="${msg.completed} ? '✅' : '❌'">完了</span>
+    <a th:href="@{/edit/{id}(id=${msg.id})}">[編集]</a>
+    <a th:href="@{/delete/{id}(id=${msg.id})}" onclick="return confirm('削除しますか？')">[削除]</a>
+    </li>
+    </ul>
+</body>
+</html>
